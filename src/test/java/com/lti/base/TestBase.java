@@ -9,14 +9,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.testng.annotations.AfterSuite;
+import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
 public class TestBase {
 
-	public static WebDriver driver;
+	public static WebDriver driver=null;
 	public static Properties config = new Properties();
 	public static Properties OR = new Properties();
 	public static FileInputStream fis;
@@ -24,6 +23,8 @@ public class TestBase {
 
 	@BeforeTest
 	public void setup() throws IOException {
+		
+		if(driver==null) {
 		FileInputStream fis = new FileInputStream(
 				System.getProperty("user.dir") + "\\src\\test\\resources\\properties\\Config.properties");
 		config.load(fis);
@@ -45,7 +46,9 @@ public class TestBase {
 		
 		driver.get(config.getProperty("testurl"));
 		log.info("URL opened successfully...!!!");
+		Reporter.log("URL opened successfully...!!!");
 		driver.manage().window().maximize();
+		}
 		
 	}
 
@@ -54,6 +57,7 @@ public class TestBase {
 		if(driver!=null)
 		{
 		driver.quit();
+		driver=null;
 		log.debug("browser closed");
 		}
 	}
