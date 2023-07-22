@@ -9,23 +9,23 @@ import org.testng.annotations.Test;
 import com.lti.base.TestBase;
 
 public class LoginTest extends TestBase {
-	
+
 	@Test
-	public void bankManagerLogin() throws InterruptedException
-	{
-		System.setProperty("org.uncommons.reportng.escape-output", "false");
-		WebElement bnkmgrbtn=driver.findElement(By.xpath(OR.getProperty("bankManagerLoginbtn")));
-		Assert.assertTrue(bnkmgrbtn.isEnabled());
+	public void bankManagerLogin() throws InterruptedException {
+		
+		WebElement bnkmgrbtn = driver.findElement(By.xpath(OR.getProperty("bankManagerLoginbtn")));
+		Assert.assertFalse(bnkmgrbtn.isEnabled());
 		driver.findElement(By.xpath(OR.getProperty("bankManagerLoginbtn"))).click();
 		log.debug("Clicked on bank manger login button");
-		Reporter.log("<a target=\"_blank\" href=\"C:\\Users\\Amir\\eclipse-workspace\\SafwanDataDriven\\src\\test\\resources\\screenshot\\error.jpg\">Screenshot</a> ");
-//		String appURL=driver.getCurrentUrl();
-//		String url="https://www.way2automation.com/angularjs-protractor/banking/#/manager";
-//		Assert.assertEquals(appURL, url);
-//		String titleURL="Protractor practice website - Banking App";
-//		String title=driver.getTitle();
-//		Assert.assertEquals(title, titleURL);
+		
 	}
 
+	@Test
+	public void bankManagerLogin1() throws InterruptedException {
+		System.setProperty("org.uncommons.reportng.escape-output", "false");
+		WebElement bnkmgrbtn = driver.findElement(By.xpath(OR.getProperty("bankManagerLoginbtn")));
+		Assert.assertFalse(bnkmgrbtn.isEnabled());
+		driver.findElement(By.xpath(OR.getProperty("bankManagerLoginbtn"))).click();
+		}
 
 }
