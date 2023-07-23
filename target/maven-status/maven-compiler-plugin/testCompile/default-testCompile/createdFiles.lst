@@ -1,7 +1,0 @@
-com\lti\rough\TestProperties.class
-com\lti\rough\DBConnection.class
-com\lti\utilities\TestUtil.class
-com\lti\testcases\LoginTest.class
-com\lti\rough\DateFunction.class
-com\lti\base\TestBase.class
-com\lti\listeners\CustomListeners.class
