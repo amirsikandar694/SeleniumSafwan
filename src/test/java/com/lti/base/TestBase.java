@@ -15,6 +15,10 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
+import com.lti.utilities.ExtentManager;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+
 public class TestBase {
 
 	public static WebDriver driver=null;
@@ -22,6 +26,8 @@ public class TestBase {
 	public static Properties OR = new Properties();
 	public static FileInputStream fis;
 	public static Logger log=Logger.getLogger("devpinoyLogger");
+	public ExtentReports rep=ExtentManager.getInstance();
+	public static ExtentTest test;
 
 	@BeforeMethod
 	public void setup() throws IOException {

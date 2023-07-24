@@ -7,17 +7,24 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
+import com.lti.base.TestBase;
 import com.lti.utilities.TestUtil;
+import com.relevantcodes.extentreports.LogStatus;
 
-public class CustomListeners implements ITestListener{
+public class CustomListeners extends TestBase implements ITestListener{
 	
 	public void onTestStart(ITestResult result) {
 		// TODO Auto-generated method stub
+		test=rep.startTest(result.getName().toUpperCase());
 		
 
 	}
 
 	public void onTestSuccess(ITestResult result) {
+		
+		TestBase.test.log(LogStatus.PASS, result.getName().toUpperCase()+"PASS");
+		rep.endTest(test);
+		rep.flush();
 
 
 	}
@@ -30,13 +37,19 @@ public class CustomListeners implements ITestListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		TestBase.test.log(LogStatus.FAIL, result.getName().toUpperCase()+"Failed with exception"+result.getThrowable());
+		TestBase.test.log(LogStatus.FAIL, test.addScreenCapture(TestUtil.screenshotName));
+		
+		
 		Reporter.log("Capturing the screenshot");
 		Reporter.log(
 				"<a target=\"_blank\" href="+TestUtil.screenshotName+">Screenshot</a> ");
 		Reporter.log("<br>");
 		Reporter.log(
 				"<a target=\"_blank\" href="+TestUtil.screenshotName+"><img src="+TestUtil.screenshotName+" height=200 width=200></img></a> ");
-
+		rep.endTest(test);
+		rep.flush();
 
 	}
 
