@@ -52,6 +52,7 @@ public class TestBase {
 			log.info("IE browser launched");
 		}
 		
+		 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\test\\resources\\runner\\chromedriver.exe");
 		driver.get(config.getProperty("testurl"));
 		log.info("URL opened successfully...!!!");
 		Reporter.log("URL opened successfully...!!!");
