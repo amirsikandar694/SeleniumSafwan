@@ -20,7 +20,7 @@ public class LoginTest extends TestBase {
 		
 	}
 
-	//@Test
+	@Test
 	public void bankManagerLogin1() throws InterruptedException {
 		System.setProperty("org.uncommons.reportng.escape-output", "false");
 		WebElement bnkmgrbtn = driver.findElement(By.xpath(OR.getProperty("bankManagerLoginbtn")));
