@@ -19,6 +19,9 @@ import com.lti.utilities.ExtentManager;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
+
 public class TestBase {
 
 	public static WebDriver driver=null;
@@ -42,9 +45,11 @@ public class TestBase {
 		log.info("Object repo file loaded");
 		System.out.println(config.getProperty("browser"));
 		if (config.getProperty("browser").equalsIgnoreCase("chrome")) {
+			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 			log.info("Chrome browser launched");
 		} else if (config.getProperty("browser").equalsIgnoreCase("firefox")) {
+			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			log.info("firefox browser launched");
 		} else {
@@ -52,7 +57,8 @@ public class TestBase {
 			log.info("IE browser launched");
 		}
 		
-		 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\test\\resources\\runner\\chromedriver.exe");
+		// System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\test\\resources\\runner\\chromedriver.exe");
+		// System.out.print(System.getProperty("user.dir")+"\\src\\test\\resources\\runner\\chromedriver.exe");
 		driver.get(config.getProperty("testurl"));
 		log.info("URL opened successfully...!!!");
 		Reporter.log("URL opened successfully...!!!");
