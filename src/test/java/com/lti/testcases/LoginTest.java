@@ -14,7 +14,7 @@ public class LoginTest extends TestBase {
 	public void bankManagerLogin() throws InterruptedException {
 		
 		WebElement bnkmgrbtn = driver.findElement(By.xpath(OR.getProperty("bankManagerLoginbtn")));
-		Assert.assertFalse(bnkmgrbtn.isEnabled());
+		Assert.assertTrue(bnkmgrbtn.isEnabled());
 		driver.findElement(By.xpath(OR.getProperty("bankManagerLoginbtn"))).click();
 		log.debug("Clicked on bank manger login button");
 		
@@ -24,7 +24,7 @@ public class LoginTest extends TestBase {
 	public void bankManagerLogin1() throws InterruptedException {
 		System.setProperty("org.uncommons.reportng.escape-output", "false");
 		WebElement bnkmgrbtn = driver.findElement(By.xpath(OR.getProperty("bankManagerLoginbtn")));
-		Assert.assertFalse(bnkmgrbtn.isEnabled());
+		Assert.assertTrue(bnkmgrbtn.isEnabled());
 		driver.findElement(By.xpath(OR.getProperty("bankManagerLoginbtn"))).click();
 		}
 
